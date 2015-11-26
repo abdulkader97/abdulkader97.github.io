@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="{{ site.baseurl }}/">{{ site.name }}</a>
+  </h1>
+</header>      
+<div class="content post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-date">
+
+<time>
+{% assign m = page.date | date: "%-m" %}
+{{ page.date | date: "%-d" }}
+{% case m %}
+  {% when '1' %}كانون الثاني
+  {% when '2' %}شباط
+  {% when '3' %}آذار
+  {% when '4' %}نيسان
+  {% when '5' %}أيار
+  {% when '6' %}حزيران
+  {% when '7' %}تموز
+  {% when '8' %}آب
+  {% when '9' %}أيلول
+  {% when '10' %}تشرين الأول
+  {% when '11' %}تشرين الثاني
+  {% when '12' %}كانون الأول
+{% endcase %}
+{{ page.date | date: "%Y" }}
+</time>
+  </div>
+  {{ content }}
+</div>

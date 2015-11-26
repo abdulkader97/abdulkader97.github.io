@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<header class="masthead">        
+  <h1 class="masthead-title">
+    <a href="{{ site.baseurl }}/"><span>المدونة</span> {{ site.name }}</a>
+  </h1>
+  <nav class="masthead-nav">
+    {% for nav in site.nav %}
+    <a href="{{ nav.href }}">{{ nav.name }}</a>
+    {% endfor %}
+  </nav>
+</header>
+<div class="content list">
+{% if site.posts.size == 0 %}
+  <h2>لا توجد منشورات</h2>
+{% else %}
+{% for post in site.posts %}
+  <div class="list-item">
+    <h2 class="list-post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </h2>
+    <div class="list-post-date">
+      <time>
+        {% assign m = post.date | date: "%-m" %}
+        {{ post.date | date: "%-d" }}
+        {% case m %}
+          {% when '1' %}كانون الثاني
+          {% when '2' %}شباط
+          {% when '3' %}آذار
+          {% when '4' %}نيسان
+          {% when '5' %}أيار
+          {% when '6' %}حزيران
+          {% when '7' %}تموز
+          {% when '8' %}آب
+          {% when '9' %}أيلول
+          {% when '10' %}تشرين الأول
+          {% when '11' %}تشرين الثاني
+          {% when '12' %}كانون الأول
+        {% endcase %}
+        {{ post.date | date: "%Y" }}
+      </time>
+    </div>
+  </div>
+{% endfor %}
+{% endif %}
+</div>
